@@ -19,7 +19,7 @@ export default function RegisterForm(props) {
     onSubmit: async (formData) => {
       console.log("registro enviado!! OK");
       console.log(formData);
-      //      setLoading(true);
+      setLoading(true);
       try {
         await registerApi(formData);
         console.log("Okey registerAPI");
