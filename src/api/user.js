@@ -10,8 +10,8 @@ export async function registerApi(formData) {
       },
       body: JSON.stringify(formData),
     };
-    console.log(result + "result");
-    console.log(formData + "formData");
+    console.log(result + "result user Ok");
+    console.log(formData + "formData user.js Ok");
 
     const response = await fetch(url, params);
     const result = await response.json();
@@ -21,7 +21,7 @@ export async function registerApi(formData) {
     return null;
   }
 }
-/* 
+
 export async function loginApi(formData) {
   try {
     const url = `${API_URL}/api/auth/local`;
@@ -40,7 +40,7 @@ export async function loginApi(formData) {
     return null;
   }
 }
-
+/*
 export async function getMeApi(token) {
   try {
     const url = `${API_URL}/users/me`;

@@ -8,6 +8,7 @@ import { registerApi } from "../../api/user";
 import { formStyle } from "../../styles";
 
 export default function RegisterForm(props) {
+  const { changeForm } = props;
   const { setShowLogin } = props;
   const [loading, setLoading] = useState(false);
 
@@ -22,7 +23,11 @@ export default function RegisterForm(props) {
       setLoading(true);
       try {
         await registerApi(formData);
-        console.log("Okey registerAPI");
+        changeForm();
+        Toast.show("Ingrese sus datos", {
+          position: Toast.positions.CENTER,
+        });
+        console.log("Okey registerAPI Register Form");
         showLogin();
       } catch (error) {
         Toast.show("Error al registrar el usuario", {
