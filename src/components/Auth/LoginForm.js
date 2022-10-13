@@ -4,14 +4,15 @@ import { TextInput, Button } from "react-native-paper";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Toast from "react-native-root-toast";
-//import useAuth from "../../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 import { loginApi } from "../../api/user";
 import { formStyle } from "../../styles";
 
 export default function LoginForm(props) {
   //const { setShowLogin } = props;
+
   const [loading, setLoading] = useState(false);
-  //const { login } = useAuth();
+  const { login } = useAuth();
 
   const { changeForm } = props;
 
@@ -27,7 +28,7 @@ export default function LoginForm(props) {
         const response = await loginApi(formData);
         if (response.statusCode) throw "Error en el usuario o contraseña";
         console.log(response);
-        //   login(response);
+        login(response);
       } catch (error) {
         Toast.show(error, {
           position: Toast.positions.CENTER,
