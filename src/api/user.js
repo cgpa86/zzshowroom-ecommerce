@@ -40,10 +40,10 @@ export async function loginApi(formData) {
     return null;
   }
 }
-/*
+
 export async function getMeApi(token) {
   try {
-    const url = `${API_URL}/users/me`;
+    const url = `${API_URL}/api/users/me`;
     const params = {
       headers: {
         "Content-Type": "application/json",
@@ -52,13 +52,15 @@ export async function getMeApi(token) {
     };
     const response = await fetch(url, params);
     const result = await response.json();
+    console.log(result);
+
     return result;
   } catch (error) {
     console.log(error);
     return null;
   }
 }
-
+/*
 export async function updateUserApi(auth, formData) {
   try {
     const url = `${API_URL}/users/${auth.idUser}`;

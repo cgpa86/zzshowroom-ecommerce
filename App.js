@@ -7,6 +7,8 @@ import { StyleSheet, Text, View, Button } from "react-native";
 import AuthContext from "./src/context/AuthContext";
 import { setTokenApi, getTokenApi, removeTokenApi } from "./src/api/token";
 
+import AppNavigation from "./src/navigation/AppNavigation";
+
 export default function App() {
   const [auth, setAuth] = useState(undefined);
 
@@ -15,13 +17,13 @@ export default function App() {
       const token = await getTokenApi();
       if (token) {
         console.log("***************************************************");
-        console.log("****************Estoy Entrando*********************");
+        console.log("***************Entrando a ZaZuShowRoom*************");
         console.log("***************************************************");
         console.log("Token:");
         console.log(token);
         console.log("***************************************************");
 
-        console.log("jwtDecode TOKEN:");
+        console.log("TOKEN jwt:");
         console.log(jwtDecode(token));
         console.log("***************************************************");
 
@@ -67,22 +69,7 @@ export default function App() {
 
   return (
     <AuthContext.Provider value={authData}>
-      <PaperProvider>
-        {/*         {auth ? <UserNavigation /> : <AuthScreen />}
-         */}
-        {auth ? (
-          <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
-            <Text> Zona de Usuarios</Text>
-            <Button title="Cerrar Sesion" onPress={authData.logout}>
-              {" "}
-            </Button>
-          </View>
-        ) : (
-          <AuthScreen />
-        )}
-      </PaperProvider>
+      <PaperProvider>{auth ? <AppNavigation /> : <AuthScreen />}</PaperProvider>
     </AuthContext.Provider>
   );
 }
